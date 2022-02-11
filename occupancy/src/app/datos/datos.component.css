@@ -1,0 +1,32 @@
+.restaurante-card{
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    height:90%;
+    width:320px;
+    margin: 30px;
+    float:left;
+}
+
+.lista-restaurantes{
+    margin-top:20px;
+}
+.porcentaje{
+    transform: translate(38px, -160px);
+}
+
+.custom ::ng-deep .mat-progress-bar-fill::after {
+    background-color: #fadb29;
+}
+
+.custom ::ng-deep .mat-progress-bar-buffer {
+    background: #f9ffa3;
+}
+
+.button-add{
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
+    z-index: 99999;
+}
+
+.heartbeat{-webkit-animation:heartbeat 2s ease-in-out infinite both;animation:heartbeat 2s ease-in-out infinite both}
+@-webkit-keyframes heartbeat{from{-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:center center;transform-origin:center center;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}10%{-webkit-transform:scale(.91);transform:scale(.91);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}17%{-webkit-transform:scale(.98);transform:scale(.98);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}33%{-webkit-transform:scale(.87);transform:scale(.87);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}45%{-webkit-transform:scale(1);transform:scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}}@keyframes heartbeat{from{-webkit-transform:scale(1);transform:scale(1);-webkit-transform-origin:center center;transform-origin:center center;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}10%{-webkit-transform:scale(.91);transform:scale(.91);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}17%{-webkit-transform:scale(.98);transform:scale(.98);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}33%{-webkit-transform:scale(.87);transform:scale(.87);-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}45%{-webkit-transform:scale(1);transform:scale(1);-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out}}

@@ -1,0 +1,6 @@
+Flask==1.1.2
+Flask_RESTful==0.3.8
+flask_cors==3.0.10
+nucypher==4.8.2
+pycryptodome==3.10.1
+umbral==0.1.3a2

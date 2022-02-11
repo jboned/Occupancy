@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Occupacity - Enrico</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link href="/css/style.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/ec0dfd4021.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-dark" style="background-color:#00324b">
+            <div class="container-fluid">
+                <div class="col-4">
+                        <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="show()" style="display: inline;">
+                            <img style="width:55px" src="/img/menu_close.png"/> 
+                        </a>
+                        <a id="cerrar" class="abrir-cerrar" href="#" onclick="hide()">
+                            <img style="width:55px" src="/img/menu_open.png"/> 
+                        </a>
+                        <a onclick="go_home()" href="#"><img style="width:150px" src="/img/occupancy.png"/></a>
+                </div>
+                <div class="col-6">
+                    <span class="navbar-text text-center">
+                        TFM Javier Boned
+                        <a href="https://www.uma.es"><img style="width:150px" src="/img/uma.png"/></a>
+                    </span>
+                </div>
+                <div class="col-2">
+                    <span class="navbar-text">
+                        <img style="width:150px" src="/img/nucypher.png"/>
+                    </span>
+                </div>
+            </div>
+        </nav>
+
+        <div id="sidebar" class="sidebar" style="width: 0px;">
+            <a href="#" class="boton-cerrar" onclick="hide()">×</a>
+            <ul class="menu fa-ul">
+                <li><i class="fab fa-raspberry-pi" style="color:white;font-size: 120%"></i><a onclick="go_home()" href="#">Home</a></li><br/>
+                <li><i class="fas fa-history" style="color:white;font-size: 120%"></i><a href="#" onclick="go_history()">Data History</a></li><br/>
+                <li><i class="fas fa-chart-line" style="color:white;font-size: 120%"></i><a href="#" onclick="go_stats()"> Stadistics</a></li>
+                <li class="ultimo_elemento"><img style="width:150px" src="/img/pi.png"/></li>
+            </ul>
+        </div>
+        <div id="contenido" style="margin-left: 0px;">
+            <div class="container mt-4">
+                <!-- CONTENIDO PÁGINA INICIO -->
+                <div id="contenido_main" class="jumbotron">
+                    <h1 class="display-4">Enrico Homepage - <%= name %></h1>
+                    <hr>
+                    <div class="row">
+                        <div class="col-4 col-index">
+                            <p class="lead"> Streamr uploaded data : </p>
+                            <hr>
+                            <b>Enrico: </b> <e id="enrico"><%= enrico %></e><br/>
+                            <b>Timestamp: </b> <%= timestamp %><br/>
+                            <b>Ciphertext: </b> <e id="ciphertext"><%= ciphertext %></e><br/>
+                            <hr>
+                            <p class="lead">NuCypher data: </p>
+                            <hr>
+			    <b>Account: </b> <%= account %><br/>
+                            <b>Policy PubKey: </b> <%= policy_pubkey %><br/>
+                            </p>
+                        </div>
+                        <div class="col-4"><img class="w-100"  src="/img/raspberry.gif"></div>
+                        <div class="col-4 col-index">
+                            <p class="lead">Datos del restaurante: </p>
+                            <hr>
+                            <b>Name:</b> <%= name %><br/>
+                            <b>Total occupancy: </b> <%= total_occupancy %><br/>
+                            <b>Now occupancy: </b><e id="now_occupancy"><%= now_occupancy %></e> <br/>
+                            <b>Occupancy Percent: </b><e id="porcentaje"><%= porcentaje %></e>% <br/>
+                            </p>
+                            <img width="300px" src="<%- imagen %>">
+                        </div>
+                    </div>
+                </div> 
+                <!-- CONTENIDO PÁGINA HISTORIAL -->
+                <div id=contenido_history class="jumbotron">
+                    <h1 class="display-4">Historial de mensajes de <%- name %></h1>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Enrico</th>
+                                    <th scope="col">Policy Pubkey</th>
+                                    <th scope="col">Ciphertext</th>
+                                    <th scope="col">Timestamp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="body_table"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- CONTENIDO PÁGINA ESTADÍSTICAS -->
+                <div id="contenido_stats" class="jumbotron">
+                    <canvas id="chart_bar" width="100" height="50"></canvas>
+                    <canvas id="chart_line" width="100" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script>
+
+            function go_home(){
+                $("#contenido_stats").hide();
+                $("#contenido_history").hide();     
+                $("#contenido_main").show();
+                hide();
+            }
+            
+            function ir_historial(){
+                $("#contenido_main").hide();
+                $("#contenido_stats").hide();
+                $("#contenido_history").show();
+                hide();
+            }
+
+            function go_stats(){
+                $("#contenido_history").hide();     
+                $("#contenido_main").hide();
+                $("#contenido_stats").show();
+                hide();
+            }
+                   
+            function show() {
+                document.getElementById("sidebar").style.width = "300px";
+                document.getElementById("contenido").style.marginLeft = "300px";
+                document.getElementById("abrir").style.display = "none";
+                document.getElementById("cerrar").style.display = "inline";
+            }
+            
+            function hide() {
+                document.getElementById("sidebar").style.width = "0";
+                document.getElementById("contenido").style.marginLeft = "0";
+                document.getElementById("abrir").style.display = "inline";
+                document.getElementById("cerrar").style.display = "none";
+            }
+
+            var chart_bar;
+            var chart_line;
+
+            setInterval(function(){
+                $.ajax({
+                    "success":function(data){
+                        let porcent, af, times;
+                        let params_list = {};
+                        for (d in data){
+                            if( d == 'timestamp'){
+                                params_list[d] = data[d];
+                                times = data[d];
+                            }else if (d == 'enrico' || d == 'ciphertext'  || d == 'policy_pubkey'){
+                                params_list[d] = data[d];
+                            }else if(d == 'now_occupancy'){
+                                af = data[d];
+                                porcent = Math.round((data[d] / '<%- total_occupancy %>')*100) 
+                            }
+                            $("#"+d).text(data[d]);
+                        }
+                        let html = '<tr><td>'+params_list['enrico']+'</td><td>'+params_list['policy_pubkey']+'</td><td>'+params_list['ciphertext']+'</td><td>'+params_list['timestamp']+'</td></tr>'
+                        $("#body_table").append(html);
+
+                        //Meter en las gráficas
+                        addData(chart_bar, times, porcent)
+                        addData(chart_line,times,af);
+                    }
+                })
+            }, 10000);
+            
+            $( document ).ready(function() {
+                let param_list = {};
+                param_list["enrico"] = '<%- enrico %>'; param_list["ciphertext"] = '<%- ciphertext %>'; param_list["timestamp"] = '<%- timestamp %>'; param_list["policy_pubkey"] = '<%- policy_pubkey %>';
+                let html = '<tr><td>'+param_list['enrico']+'</td><td>'+param_list['policy_pubkey']+'</td><td>'+param_list['ciphertext']+'</td><td>'+param_list['timestamp']+'</td></tr>'
+                $("#body_table").append(html);
+
+                var ctx = document.getElementById('chart_bar').getContext('2d');
+                let percent = Math.round(('<%- now_occupancy %>' / '<%- total_occupancy %>')*100)
+                chart_bar = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['<%- timestamp %>'],
+                        datasets: [{
+                            label: 'Percentage.',
+                            data: [percent],
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {}
+                });
+
+                var ctx2 = document.getElementById('chart_line').getContext('2d');
+                chart_line = new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: ['<%- timestamp %>'],
+                        datasets: [{
+                            label: 'Now occupancy.',
+                            data: ['<%- now_occupancy %>'],
+                            backgroundColor: 'rgba(59, 131, 189, 0.2)',
+                            borderColor: 'rgba(59, 131, 189, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {}
+                });
+            });
+
+            function addData(chart, label, data) {
+                chart.data.labels.push(label);
+                chart.data.datasets.forEach((dataset) => {
+                    dataset.data.push(data);
+                });
+                chart.update();
+            }
+
+        </script>
+    </body>
+</html>

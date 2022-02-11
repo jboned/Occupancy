@@ -1,0 +1,16 @@
+<mat-dialog-content align="center">
+  <h3>Download your JSON file to be able to login on another browser.</h3>
+  <button mat-flat-button>
+    <a class="btn btn-clear" title="Download JSON" [href]="downloadJsonHref" download="download.json">Download JSON </a>
+    <mat-icon>file_download</mat-icon>
+  </button>
+  <h3>and upload it to Dropbox</h3>
+  <div id="cont-drop" class="dropbox-saver"></div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+    <div><p>Now you can access to the details of the restaurants you have subscribed to.</p></div>
+    <div><button mat-raised-button mat-dialog-close color="primary"> Go <mat-icon>skip_next</mat-icon> </button></div>
+  </div>
+</mat-dialog-actions>
+

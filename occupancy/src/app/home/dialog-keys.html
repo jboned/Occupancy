@@ -1,0 +1,21 @@
+<mat-dialog-content align="center">
+  <h3>We have not found your passwords in this browser.</h3>
+  <p>If you are an user of the application, drag here the file that was provided to you during the registration process.</p>
+
+  <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFileDragDrop($event)">
+    <input hidden type="file" #fileInput (change)="uploadFileManual($event)">
+  </div>
+
+  <div class="files-list" *ngIf="file != undefined">
+      <p> {{ file.name }} </p>
+      <button class="delete-file" (click)="deleteAttachment()">
+        <img src="../../assets/img/Recycle_Bin_Full.png">
+      </button>
+  </div>
+  <button mat-raised-button color="primary" (click)="checkFile()"class="boton-crear" *ngIf="file != undefined">Check file. <mat-icon>check_circle</mat-icon></button>
+  <p>If you are not an user, create an account in our application, please: </p>
+  <button mat-raised-button color="accent" class="boton-crear" mat-dialog-close (click)="irCrearCuenta()">Create <mat-icon>person_add_alt_1</mat-icon></button>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,36 @@
+<div class="fondo-toolbar"></div>
+<button *ngIf="ok" class="button-add" matTooltip="Suscribirse a nuevos restaurantes." matTooltipPosition="above" (click)="subscribe()" mat-fab color="accent"><mat-icon>add</mat-icon></button>
+<div *ngIf="ok" style="margin-top: 100px;" align="center">
+    <h1>Hello {{alias}}!</h1>
+    <p>In this page you can check in real time the occupancy of the subscribed restaurants.</p>
+</div>
+<mat-tab-group *ngIf="ok" color="accent" backgroundColor="primary">
+    <mat-tab *ngFor="let area of areas;" label="{{area}}">
+        <div *ngFor="let res of restaurantsByArea[area];let indice = index">
+            <mat-card class="restaurante-card">
+                <img height="250px" mat-card-image src="{{res.image}}" alt="Photo of a Shiba Inu">
+                <mat-card-title>{{res.name}}</mat-card-title>
+                <mat-card-subtitle>{{res.street}}</mat-card-subtitle>  
+                <p [ngStyle]="{'color': toDays(res.subscribed) < 2 ? 'red' : (toDays(res.subscribed) > 4 ? 'green' : '#FAD000') }">{{toDays(res.subscribed)}} days of subscription left</p>  
+                <p @myTrigger class="heartbeat" *ngIf="!res.loaded">Loading data...</p>
+                <div *ngIf="res.loaded" @myTrigger>
+                    <p>Occupancy: {{res.now_occupancy}} / {{res.total_occupancy}}</p> 
+                    <p>Last update: {{res.timestamp}}</p>
+                    <div style="height:100px;width:100px">
+                        <mat-progress-spinner 
+                            [ngClass]="{'completo-azul':60 >= res.percent,
+                            'completo-amarillo':res.percent > 60 && 75 >= res.percent, 
+                            'completo-rojo':res.percent > 75}" mode ="determinate" value="100">
+                        </mat-progress-spinner>
+                        <mat-progress-spinner [color]="60 >= res.percent ? 'primary' : ''" 
+                            [ngClass]="{'parte-amarillo':res.percent > 60 && 75 >= res.percent, 
+                            'parte-rojo':res.percent > 75}" class="spinner-custom" mode ="determinate" 
+                            [value]="res.percent">
+                        </mat-progress-spinner>
+                        <div [@myTrigger] *ifChanges="res.percent" class="porcentaje">{{res.percent}}%</div> 
+                    </div>
+                </div><br/>             
+            </mat-card>
+        </div>
+    </mat-tab>
+</mat-tab-group>

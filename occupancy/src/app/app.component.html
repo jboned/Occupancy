@@ -1,0 +1,20 @@
+<div class="sticky">
+  <mat-toolbar class="transparent" [ngClass]="{'opaque': isOnTop, 'text-only': !isOnTop}" >
+    <mat-toolbar-row xLayout fxLayoutAlign="center center">
+        <button fxFlex="5%" mat-icon-button><mat-icon>menu</mat-icon></button>
+        <img src="../assets/img/ethereum.png" fxFlex="5%" fxFlex.lt-sm="10%" fxFlexAlign="center" >
+        <a [routerLink]="['home']" fxFlex.lt-sm="50%" fxFlex.gt-sm="20%" fxFlex.gt-xs="30%"><img style="margin-top: 15px;" src="../assets/img/occupancy.png" width="100%"></a>
+        <span class="spacer"></span>
+        <a fxFlex="10%" fxHide.lt-sm="true" mat-button><img src = "../assets/img/uma.png" style="width: 60px"></a>
+        <div fxHide.lt-sm="true"><p>TFM Javier Boned</p></div>
+        <a fxFlex="10%" fxHide.lt-sm="true" mat-button><img src = "../assets/img/uma.png" style="width: 60px"></a>
+        <span class="spacer"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+        <mat-menu #menu="matMenu">
+            <a mat-menu-item (click)="logout()"><mat-icon>power_settings_new</mat-icon>Logout</a>
+        </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+
+<router-outlet></router-outlet>

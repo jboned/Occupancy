@@ -1,0 +1,85 @@
+<div class="fondo-toolbar"></div>
+<div style="margin-top: 100px;" align="center">
+    <h2>Subscribe to new restaurants in different areas of Malaga.</h2>
+    <mat-divider></mat-divider>
+    <br/><br/>
+    <mat-expansion-panel class="mat-input-60">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+            Areas in Malaga.
+            </mat-panel-title>
+            <mat-panel-description>
+            Select the areas of the restaurants you want to subscribe to.
+            <mat-icon>map</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <maphilight id="statesMap" [config]="config">
+            <div id="grey-map-wrapper">
+                <map name="map-mapping" id="map-mapping">
+                    <area shape="poly" #bailen_miraflores   name="Bailen_miraflores"    (click)="selectArea(bailen_miraflores)"    coords="216,299,219,277,233,270,240,271,245,285,261,291,262,295,273,302,271,315,246,313,233,308,217,308,216,299"  data="Bailén - Miraflores">
+                    <area shape="poly" #campanillas         name="Campanillas"          (click)="selectArea(campanillas)"          coords="110,373,119,364,128,358,136,356,153,357,156,352,156,336,141,335,137,332,137,324,125,321,123,316,123,310,128,298,116,214,114,187,95,186,87,190,67,204,57,205,52,207,44,208,38,203,29,188,19,180,9,177,4,177,0,180,0,322,17,323,22,331,28,341,27,352,33,355,38,357,43,362,51,375,58,376,71,372,83,376,94,374,110,373"  data="Campanillas">
+                    <area shape="poly" #carretera_de_cadiz  name="Carretera_de_cadiz"   (click)="selectArea(carretera_de_cadiz)"   coords="247,410,227,408,220,406,216,402,217,386,217,381,212,378,218,370,266,343,273,356,282,370,281,388,256,388,252,400,256,402,255,407,250,406,247,410" data="Carretera de Cádiz">
+                    <area shape="poly" #centro              name="Centro"               (click)="selectArea(centro)"               coords="280,356,267,327,273,320,277,313,279,302,293,287,314,275,321,283,318,295,317,303,320,308,310,319,302,337,297,362,282,360,280,356" data="Centro">
+                    <area shape="poly" #churriana           name="Churriana"            (click)="selectArea(churriana)"            coords="114,379,122,379,168,395,176,402,187,407,194,406,199,400,200,393,209,383,213,384,212,405,217,411,247,415,229,448,91,448,97,423,104,415,105,407,104,402,99,399,102,393,110,390,113,384,114,379"  data="Churriana">
+                    <area shape="poly" #ciudad_jardin       name="Ciudad_jardin"        (click)="selectArea(ciudad_jardin)"        coords="288,284,298,277,312,271,317,250,318,224,323,211,329,210,336,211,353,205,367,202,370,198,371,190,366,170,367,160,373,123,379,110,388,102,405,98,412,95,417,90,420,80,420,54,429,36,429,24,427,8,428,0,366,0,361,9,348,22,344,30,339,35,335,36,327,34,308,23,296,22,283,28,250,47,243,47,235,42,224,31,218,30,215,45,206,59,207,63,209,78,209,97,208,104,229,120,241,127,248,126,260,123,266,124,270,130,273,156,272,174,265,183,264,192,276,206,276,223,281,235,280,247,291,248,291,270,288,274,288,284"  data="Ciudad Jardín">
+                    <area shape="poly" #humilladero         name="Humilladero"          (click)="selectArea(humilladero)"          coords="243,317,253,320,267,319,261,325,264,338,236,355,231,358,220,363,214,366,210,370,207,374,205,381,198,387,194,394,192,401,187,401,171,390,126,375,117,374,128,364,136,362,153,362,159,357,160,351,160,336,231,337,234,332,233,327,232,324,241,325,243,317" data="Cruz de Humilladero">
+                    <area shape="poly" #este                name="Este"                 (click)="selectArea(este)"                 coords="306,365,305,353,307,337,311,327,315,320,324,310,324,307,321,301,321,296,327,283,317,271,322,247,323,226,327,215,337,215,356,209,372,205,376,198,374,181,372,167,376,131,380,119,385,111,394,106,404,103,412,100,421,94,425,83,426,56,434,38,435,22,432,7,433,0,448,0,448,113,448,225,448,338,434,330,412,327,401,324,388,321,376,320,365,319,357,317,347,315,334,318,329,323,319,325,313,331,311,339,312,348,308,357,308,364,306,365" data="Este">
+                    <area shape="poly" #martiricos          name="Martiricos"           (click)="selectArea(martiricos)"           coords="240,132,251,131,261,128,265,132,269,161,268,173,259,183,259,195,266,203,271,207,271,224,276,236,274,250,288,250,289,260,286,270,283,271,284,289,275,299,265,291,263,287,250,284,246,272,241,268,234,265,233,249,243,249,242,222,240,193,234,156,237,140,240,132" data="Martiricos - La Roca">
+                    <area shape="poly" #puerto              name="Puerto"               (click)="selectArea(puerto)"               coords="133,296,154,292,165,294,171,297,178,302,190,302,201,295,209,295,212,296,215,273,231,265,230,247,239,246,237,224,231,170,229,153,232,140,235,130,206,110,199,119,187,126,167,135,151,144,144,153,139,166,134,173,130,177,123,177,119,184,122,215,133,296" data="Puerto de la Torre">
+                    <area shape="poly" #teatinos            name="Teatinos"             (click)="selectArea(teatinos)"             coords="133,300,155,297,163,298,167,300,175,307,185,308,192,307,198,303,204,300,213,301,215,310,228,312,237,316,237,319,231,318,227,321,227,326,229,332,158,332,143,330,142,320,130,317,128,311,133,300" data="Teatinos">        
+                </map>
+                <div data-grey-map="" style="display: block; background-image: url(&quot;https://st1.idealista.com/static/es/img/maps/0-EU-ES-29-02-001-067.jpg&quot;); background-size: contain; position: relative; padding: 0px; width: 447px; height: 447px;">
+                    <img src="https://st1.idealista.com/static/es/img/maps/0-EU-ES-29-02-001-067.jpg" name="map-image" id="map-image" usemap="#map-mapping" class="maphilighted" style="opacity: 0; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px;">
+                </div>
+            </div>
+            <br/><br/>
+        </maphilight> 
+    </mat-expansion-panel>   
+    <br/><br/>
+    <mat-divider></mat-divider>
+    <br/><br/> 
+
+    <mat-expansion-panel #exp class="mat-input-80" [disabled]="noRestaurants">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Restaurant subscriptions.
+            </mat-panel-title>
+            <mat-panel-description>
+                Select the restaurants you want to subscribe to.
+            <mat-icon>restaurant</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field class="mat-input-60">
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar por nombre">
+        </mat-form-field>
+        <div class="box-border">
+            <drag-scroll #nav>
+                <div drag-scroll-item *ngFor="let res of this.dataSource.filteredData;" class="carousel-cell">
+                    <mat-card class="restaurante-card" [ngStyle]="{'background-color': res.selected ? 'lightgreen' : 'white' }">
+                        <img height="250px" mat-card-image src="{{res.image}}" alt="Photo of a Shiba Inu">
+                        <mat-card-title>{{res.name}}</mat-card-title>
+                        <mat-card-subtitle>{{res.street}}</mat-card-subtitle>  
+                        <p>Area: {{res.zone}}</p>  
+                        <button mat-raised-button [ngStyle]="res.selected ? {'background-color': 'white', 'color':'black'} : {'background-color': '#3f51b5','color':'white'}" (click)="selectButton(res.id,res.zone);"><a *ngIf="res.selected">Selected</a><a *ngIf="!res.selected">Select</a></button>
+                        <br/>
+                    </mat-card>
+                </div>
+                <button (click)="moveLeft()"  class="back" mat-mini-fab color="link"><mat-icon style="padding-left: 8px;">arrow_back_ios</mat-icon></button>
+                <button (click)="moveRight()" class="next" mat-mini-fab color="link"><mat-icon>arrow_forward_ios</mat-icon></button>
+            </drag-scroll>
+        </div>      
+    </mat-expansion-panel>  
+    <br/><br/>
+    <mat-divider></mat-divider>
+    <br/><br/> 
+
+    <button submit (click) = "subscribe()" style="margin: 0 0 20px 0;;height:5em;width: 35%;" mat-raised-button color="primary">Subscribe</button>
+    <mat-divider></mat-divider>
+    <div class="cargando" *ngIf="loading" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="100px">
+        <div @fadeInOut>
+            <img class="heartbeat" src="../../assets/gif/nucypher_logo.png" style="width:40%">
+            <p>Joining NuCypher's policies... Send the transaction required by Metamask in order to join Occupancy. (A payment will be required for each restaurant subscribed)</p>
+        </div>
+    </div>
+</div>
+
