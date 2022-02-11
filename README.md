@@ -20,7 +20,7 @@
 <h3 align="center">Occupancy</h3>
 
   <p align="center">
-    Occupancy is my master's thesis project for the Master's Degree in Computer Science and Engineering in the University of Malaga. This master's thesis project presents a secure real-time occupancy control system in which the omnipresence of decentraliced technologies stands out, through the storage (using the IPFS file system), sending (using the Streamr platform), automated management (using Smart Contracts of the Blockchain) and security (using the NuCypher network) of the data.
+    This master's thesis project presents a secure real-time occupancy control system in which the omnipresence of decentraliced technologies stands out, through the storage (using the IPFS file system), sending (using the Streamr platform), automated management (using Smart Contracts of the Blockchain) and security (using the NuCypher network) of the data.
   </p>
 
   ![Home Screen Shot][home-screenshot]
