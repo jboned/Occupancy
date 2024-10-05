@@ -72,7 +72,7 @@ export class DatosComponent implements OnInit {
 
   client = new StreamrClient({
     auth: {
-      privateKey: "91c06e68cc18ec5a7dba096d6c670c2b96853a243f107ee16edff5ce0261bd8d"
+      privateKey: ""
     }
   })
   
